@@ -3,7 +3,7 @@ import app from "./app.js";
 
 const startServer = (port: number): void => {
   app.listen(port, () => {
-    /* eslint-disable */
+    /* eslint-disable no-console */
     console.log("++++++++++++++++++++++++++++++++++++++++++++++");
     console.log(
       `🚀 ${chalk.bold.blue("Server running at")} ${chalk.green(
@@ -11,7 +11,7 @@ const startServer = (port: number): void => {
       )} 🚀`,
     );
     console.log("++++++++++++++++++++++++++++++++++++++++++++++");
-    /* eslint-enable */
+    /* eslint-enable no-console */
   });
 };
 
