@@ -9,6 +9,10 @@ describe("Given the handleEndpointNotFound function", () => {
       json: jest.fn(),
     } as Pick<Response, "status" | "json">;
 
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
     test("Then it should call the response's status method with status code 404", () => {
       const expectedStatusCode = 404;
 
