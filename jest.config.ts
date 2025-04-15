@@ -7,6 +7,8 @@ const config: Config = {
   moduleNameMapper: {
     "^(\\.\\.?\\/.+)\\.js$": "$1",
   },
+  collectCoverageFrom: ["**/*.ts", "!index.ts", "!**/types.ts", "!**/data/**"],
+  coverageDirectory: "../coverage",
   ...createDefaultPreset(),
 };
 
