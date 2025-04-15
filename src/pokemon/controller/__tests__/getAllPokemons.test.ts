@@ -3,20 +3,19 @@ import PokemonController from "../PokemonController.js";
 import { minun, plusle } from "../../fixtures.js";
 
 describe("Given the getAllPokemon method of PokemonController", () => {
-  const pokemons = [plusle, minun];
-  const pokemonController = new PokemonController(pokemons);
-
-  const req = {};
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
   describe("When it receives a response", () => {
+    const pokemons = [plusle, minun];
+    const pokemonController = new PokemonController(pokemons);
+
+    const req = {};
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
     } as Pick<Response, "status" | "json">;
+
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
 
     test("Then it should call the response's status method with status code 200", () => {
       const expectedStatusCode = 200;
