@@ -3,7 +3,7 @@ import { minun, plusle } from "../../fixtures.js";
 import PokemonController from "../PokemonController.js";
 import Pokemon from "../../Pokemon.js";
 
-describe("Given the createPokemon method of PokemonController", () => {
+describe("Given the addPokemon method of PokemonController", () => {
   let pokemons: Pokemon[];
   let pokemonController: PokemonController;
 
@@ -27,7 +27,7 @@ describe("Given the createPokemon method of PokemonController", () => {
     test("Then it should call the response's status method with status code 201", () => {
       const expectedStatusCode = 201;
 
-      pokemonController.createPokemon(req as Request, res as Response);
+      pokemonController.addPokemon(req as Request, res as Response);
 
       expect(res.status).toHaveBeenCalledWith(expectedStatusCode);
     });
@@ -35,7 +35,7 @@ describe("Given the createPokemon method of PokemonController", () => {
     test("Then it should call the response's json method with a pokemon called 'Plusle'", () => {
       const expectedName = { name: plusle.name };
 
-      pokemonController.createPokemon(req as Request, res as Response);
+      pokemonController.addPokemon(req as Request, res as Response);
 
       expect(res.json).toHaveBeenCalledWith(
         expect.objectContaining(expectedName),
@@ -45,7 +45,7 @@ describe("Given the createPokemon method of PokemonController", () => {
     test("Then it should call the response's json method with a pokemon with index 311", () => {
       const expectedPokeIndex = { pokeIndex: 311 };
 
-      pokemonController.createPokemon(req as Request, res as Response);
+      pokemonController.addPokemon(req as Request, res as Response);
 
       expect(res.json).toHaveBeenCalledWith(
         expect.objectContaining(expectedPokeIndex),
@@ -53,7 +53,7 @@ describe("Given the createPokemon method of PokemonController", () => {
     });
 
     test("Then it should call the response's json method with a pokemon that is not captured", () => {
-      pokemonController.createPokemon(req as Request, res as Response);
+      pokemonController.addPokemon(req as Request, res as Response);
 
       expect(res.json).toHaveBeenCalledWith(
         expect.objectContaining({ isCaptured: false }),
@@ -67,7 +67,7 @@ describe("Given the createPokemon method of PokemonController", () => {
     test("Then it should call the response's status method with status code 409", () => {
       const expectedStatusCode = 409;
 
-      pokemonController.createPokemon(req as Request, res as Response);
+      pokemonController.addPokemon(req as Request, res as Response);
 
       expect(res.status).toHaveBeenCalledWith(expectedStatusCode);
     });
@@ -77,7 +77,7 @@ describe("Given the createPokemon method of PokemonController", () => {
         error: "Pokemon already exists",
       };
 
-      pokemonController.createPokemon(req as Request, res as Response);
+      pokemonController.addPokemon(req as Request, res as Response);
 
       expect(res.json).toHaveBeenCalledWith(expectedErrorMessage);
     });

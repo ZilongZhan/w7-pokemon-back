@@ -10,7 +10,7 @@ class PokemonController implements PokemonControllerStructure {
     res.status(200).json({ pokemons: this.pokemons });
   };
 
-  public createPokemon = (req: Request, res: Response): void => {
+  public addPokemon = (req: Request, res: Response): void => {
     const pokemonData = req.body as PokemonData;
 
     const pokemonExists = this.pokemons.some(
@@ -19,6 +19,7 @@ class PokemonController implements PokemonControllerStructure {
 
     if (pokemonExists) {
       res.status(409).json({ error: "Pokemon already exists" });
+      return;
     }
 
     const pokemon = new Pokemon(pokemonData);
@@ -26,6 +27,28 @@ class PokemonController implements PokemonControllerStructure {
     this.pokemons.push(pokemon);
 
     res.status(201).json(pokemon);
+  };
+
+  public removePokemonById = (req: Request, res: Response): void => {
+    const { pokemonId } = req.params;
+
+    const pokemonExists = this.pokemons.some(
+      (pokemon) => pokemon.id === pokemonId,
+    );
+
+    if (!pokemonExists) {
+      res.status(404).json({ error: "Pokemon doesn't exist" });
+      return;
+    }
+
+    const pokemonPosition = this.pokemons.findIndex(
+      (pokemon) => pokemon.id === pokemonId,
+    );
+    const pokemon = this.pokemons[pokemonPosition];
+
+    this.pokemons.splice(pokemonPosition, 1);
+
+    res.status(200).json(pokemon);
   };
 }
 
