@@ -1,18 +1,22 @@
 import { v4 as uuidv4 } from "uuid";
-import { PokemonStructure } from "./types.js";
+import { PokemonData, PokemonStructure } from "./types.js";
 
 class Pokemon implements PokemonStructure {
   public id: string;
+  public pokeIndex: number;
+  public name: string;
+  public imageUrl: string;
   public isCaptured: boolean;
 
   constructor(
-    public pokeIndex: number,
-    public name: string,
-    public imageUrl: string,
+    { pokeIndex, name, imageUrl, isCaptured }: PokemonData,
     generateId: () => string = uuidv4,
   ) {
     this.id = generateId();
-    this.isCaptured = false;
+    this.pokeIndex = pokeIndex;
+    this.name = name;
+    this.imageUrl = imageUrl;
+    this.isCaptured = isCaptured;
   }
 }
 

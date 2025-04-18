@@ -12,7 +12,12 @@ describe("Given a Pikachu", () => {
     test("Then it should be called 'Pikachu'", () => {
       const expectedName = "Pikachu";
 
-      const pikachu = new Pokemon(0, pikachuStructure.name, "");
+      const pikachu = new Pokemon({
+        pokeIndex: 0,
+        name: pikachuStructure.name,
+        imageUrl: "",
+        isCaptured: false,
+      });
 
       expect(pikachu.name).toBe(expectedName);
     });
@@ -20,13 +25,23 @@ describe("Given a Pikachu", () => {
     test("Then it should be pokemon number 25", () => {
       const expectedPokeIndex = 25;
 
-      const pikachu = new Pokemon(pikachuStructure.pokeIndex, "", "");
+      const pikachu = new Pokemon({
+        pokeIndex: pikachuStructure.pokeIndex,
+        name: "",
+        imageUrl: "",
+        isCaptured: false,
+      });
 
       expect(pikachu.pokeIndex).toBe(expectedPokeIndex);
     });
 
     test("Then it should not be captured", () => {
-      const pikachu = new Pokemon(0, "", "");
+      const pikachu = new Pokemon({
+        pokeIndex: 0,
+        name: "",
+        imageUrl: "",
+        isCaptured: false,
+      });
 
       expect(pikachu.isCaptured).toBe(false);
     });
