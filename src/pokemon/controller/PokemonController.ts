@@ -47,7 +47,7 @@ class PokemonController implements PokemonControllerStructure {
     res.status(200).json(pokemon);
   };
 
-  public capturePokemonById(req: Request, res: Response): void {
+  public capturePokemonById = (req: Request, res: Response): void => {
     const { pokemonId } = req.params;
     const { isCaptured } = req.body as Pick<PokemonStructure, "isCaptured">;
 
@@ -68,7 +68,7 @@ class PokemonController implements PokemonControllerStructure {
     pokemon.isCaptured = isCaptured;
 
     res.status(200).json(pokemon);
-  }
+  };
 
   private doesPokemonExist(searchValue: string): boolean {
     return this.pokemons.some(
