@@ -70,6 +70,29 @@ class PokemonController implements PokemonControllerStructure {
     res.status(200).json(pokemon);
   };
 
+  public releasePokemonById = (req: Request, res: Response): void => {
+    const { pokemonId } = req.params;
+    const { isCaptured } = req.body as Pick<PokemonStructure, "isCaptured">;
+
+    const pokemonExists = this.doesPokemonExist(pokemonId);
+
+    if (!pokemonExists) {
+      res.status(404).json({ error: "Pokemon doesn't exist" });
+      return;
+    }
+
+    const pokemon = this.pokemons.find((pokemon) => pokemon.id === pokemonId)!;
+
+    if (!pokemon.isCaptured) {
+      res.status(409).json({ error: "Pokemon is already released" });
+      return;
+    }
+
+    pokemon.isCaptured = isCaptured;
+
+    res.status(200).json(pokemon);
+  };
+
   private doesPokemonExist(searchValue: string): boolean {
     return this.pokemons.some(
       (pokemon) => pokemon.name === searchValue || pokemon.id === searchValue,
