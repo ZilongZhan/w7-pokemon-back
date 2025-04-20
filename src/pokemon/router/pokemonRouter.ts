@@ -13,8 +13,13 @@ pokemonRouter.post("/", pokemonController.addPokemon);
 pokemonRouter.delete("/:pokemonId", pokemonController.removePokemonById);
 
 pokemonRouter.patch(
-  "/add-to-pokeball/:pokemonId",
+  "/add-to-poke-ball/:pokemonId",
   pokemonController.capturePokemonById,
+);
+
+pokemonRouter.patch(
+  "/remove-from-poke-ball/:pokemonId",
+  pokemonController.releasePokemonById,
 );
 
 export default pokemonRouter;
