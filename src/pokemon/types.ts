@@ -4,6 +4,9 @@ export interface PokemonStructure {
   name: string;
   imageUrl: string;
   isCaptured: boolean;
+  description: string;
+  favoriteFood: string;
+  habitat: string;
 }
 
 export type PokemonData = Omit<PokemonStructure, "id">;
