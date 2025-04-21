@@ -7,9 +7,20 @@ class Pokemon implements PokemonStructure {
   public name: string;
   public imageUrl: string;
   public isCaptured: boolean;
+  public description: string;
+  public favoriteFood: string;
+  public habitat: string;
 
   constructor(
-    { pokeIndex, name, imageUrl, isCaptured }: PokemonData,
+    {
+      pokeIndex,
+      name,
+      imageUrl,
+      isCaptured,
+      description,
+      habitat,
+      favoriteFood,
+    }: PokemonData,
     generateId: () => string = uuidv4,
   ) {
     this.id = generateId();
@@ -17,6 +28,9 @@ class Pokemon implements PokemonStructure {
     this.name = name;
     this.imageUrl = imageUrl;
     this.isCaptured = isCaptured;
+    this.description = description;
+    this.favoriteFood = favoriteFood;
+    this.habitat = habitat;
   }
 }
 

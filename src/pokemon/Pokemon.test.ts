@@ -17,6 +17,9 @@ describe("Given a Pikachu", () => {
         name: pikachuStructure.name,
         imageUrl: "",
         isCaptured: false,
+        description: "",
+        favoriteFood: "",
+        habitat: "",
       });
 
       expect(pikachu.name).toBe(expectedName);
@@ -30,6 +33,9 @@ describe("Given a Pikachu", () => {
         name: "",
         imageUrl: "",
         isCaptured: false,
+        description: "",
+        favoriteFood: "",
+        habitat: "",
       });
 
       expect(pikachu.pokeIndex).toBe(expectedPokeIndex);
@@ -41,6 +47,9 @@ describe("Given a Pikachu", () => {
         name: "",
         imageUrl: "",
         isCaptured: false,
+        description: "",
+        favoriteFood: "",
+        habitat: "",
       });
 
       expect(pikachu.isCaptured).toBe(false);
